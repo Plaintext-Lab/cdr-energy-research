@@ -15,6 +15,21 @@
 
 Comprehensive research and tooling for the Australian Consumer Data Right (CDR) Energy Product Reference Data (PRD) APIs. Used to power [PriceHawk](../pricehawk/) (Home Assistant integration) and inform other energy projects.
 
+## Prerequisites
+
+- Python 3
+- `pytest` for local tests (`pip install -r requirements-dev.txt`)
+
+## Core commands
+
+```bash
+python3 scripts/cdr_probe_v1.py
+python3 scripts/cdr_full_sweep_v2.py
+python3 scripts/build_catalogue.py
+python -m compileall -q scripts
+python -m pytest tests/ -q
+```
+
 ## What's here
 
 ```
@@ -39,8 +54,10 @@ cdr-energy-research/
 ├── scripts/
 │   ├── cdr_probe_v1.py            initial sample probe (5 plans/retailer)
 │   ├── cdr_full_sweep_v1.py       first full sweep
-│   └── cdr_full_sweep_v2.py       comprehensive sweep w/ EME refdata2 + brand filtering
-└── cache/v1                       symlink to /tmp/cdr-cache (149 MB raw responses)
+│   ├── cdr_full_sweep_v2.py       comprehensive sweep w/ EME refdata2 + brand filtering
+│   └── build_catalogue.py         builds compact PriceHawk catalogue from sweep cache
+├── tests/                         offline regression tests (pytest)
+└── cache/v1 + cache/v2            gitignored symlinks to /tmp/cdr-cache
 ```
 
 ## TL;DR — where to start
@@ -50,6 +67,7 @@ cdr-energy-research/
 3. **Read `docs/upcoming-changes.md`** for what to watch (especially Solar Sharer Offer landing 1 July 2026).
 4. **Read `docs/api-reference.md`** for the operational HOWTO.
 5. **Run `scripts/cdr_full_sweep_v2.py`** to refresh data.
+6. **Run `scripts/build_catalogue.py`** to generate `dist/catalogue.json.gz` for consumers.
 
 ## Key endpoints
 
@@ -102,6 +120,16 @@ URI, producing four operational shared base URIs hosting 11 brands.
 - Cache hits make re-runs free. Use `?updated-since=<iso>` for incremental sync (5 min instead of 33 min).
 - Spec versions: plan list = v1 (`x-v: 1`), plan detail = v3 (`x-v: 3`). v2 retired March 2025.
 
+## Catalogue output
+
+- Local build output: `dist/catalogue.json.gz` and `dist/manifest.json`
+- Scheduled publication: `.github/workflows/publish-catalogue.yml` (daily + manual)
+- Stable latest download URL: `https://github.com/Artic0din/cdr-energy-research/releases/latest/download/catalogue.json.gz`
+
 ## Status
 
 **Private research repo.** Not for public publication without legal review (AER/CDR data is public but operational details should be reviewed).
+
+## License
+
+No license file is currently present in this repository.

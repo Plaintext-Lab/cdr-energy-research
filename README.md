@@ -124,7 +124,7 @@ URI, producing four operational shared base URIs hosting 11 brands.
 
 - Local build output: `dist/catalogue.json.gz` and `dist/manifest.json`
 - Scheduled publication: `.github/workflows/publish-catalogue.yml` (daily + manual)
-- Stable latest download URL: `https://github.com/Artic0din/cdr-energy-research/releases/latest/download/catalogue.json.gz`
+- Stable latest download URL: `https://github.com/Plaintext-Lab/cdr-energy-research/releases/latest/download/catalogue.json.gz`
 
 ## Status
 

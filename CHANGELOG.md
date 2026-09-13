@@ -12,6 +12,8 @@ All notable changes to this research repo.
 
 ### Fixed
 
+- Replaced the blocked third-party release action with GitHub CLI so catalogue publishing complies with the repository's allowed-actions policy.
+  Preserved dated releases, same-day asset replacement and the latest download URL, with offline publishing regression tests running in CI.
 - Distinguished the generated EME and authoritative AER shared-base-URI counts,
   documented the Radian endpoint, and aligned rate-limit guidance with the
   base-URI throttle.
@@ -53,7 +55,7 @@ All notable changes to this research repo.
 - Daily `.github/workflows/publish-catalogue.yml` (03:00 AEST + manual dispatch):
   runs the national sweep with `--refresh` (live registry + lists + details),
   builds the catalogue, and publishes it as a GitHub Release with a dated tag and
-  `make_latest: true` so the stable `releases/latest/download/catalogue.json.gz`
+  `--latest` so the stable `releases/latest/download/catalogue.json.gz`
   URL always resolves to the newest build. Refuses to publish an empty catalogue
   (0-plan sweep fails the job) or a partial one (a `Verify sweep completeness`
   step plus the sweep's own non-zero exit block release on any list/detail

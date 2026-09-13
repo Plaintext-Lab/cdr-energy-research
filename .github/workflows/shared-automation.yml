@@ -17,7 +17,7 @@ concurrency:
 jobs:
   shared-baseline:
     name: Shared repository baseline
-    uses: Artic0din/reusable-workflows/.github/workflows/baseline.yml@ad2f70ec9dbf008652223e77424e9b329c835ad1  # v1.1.0
+    uses: Artic0din/reusable-workflows/.github/workflows/baseline.yml@0848f949100175cfa362016fb602dc945c1657e4
     with:
       required-files: >-
         README.md, CHANGELOG.md, .gitignore, AGENTS.md, requirements-dev.txt, scripts/cdr_full_sweep_v2.py,

@@ -6,7 +6,7 @@ description: Maintain cdr-energy-research's GitHub Actions callers and existing 
 # Maintain repository automation
 
 Read [project automation](../../../docs/shared-automation.md), the current workflow and repository instructions before editing.
-Use the [pinned shared workflow contract](https://github.com/Artic0din/reusable-workflows/blob/ad2f70ec9dbf008652223e77424e9b329c835ad1/docs/workflow-contracts.md) for supported inputs and permissions.
+Use the [pinned shared workflow contract](https://github.com/Artic0din/reusable-workflows/blob/0848f949100175cfa362016fb602dc945c1657e4/docs/workflow-contracts.md) for supported inputs and permissions.
 Research tooling and snapshot datasets for Australian energy product APIs.
 
 ## Implement

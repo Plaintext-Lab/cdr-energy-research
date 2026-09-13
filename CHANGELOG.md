@@ -12,6 +12,7 @@ All notable changes to this research repo.
 
 ### Fixed
 
+- Updated the shared baseline to remove its Node 20 action dependency while preserving required-file validation.
 - Replaced the blocked third-party release action with GitHub CLI so catalogue publishing complies with the repository's allowed-actions policy.
   Preserved dated releases, same-day asset replacement and the latest download URL, with offline publishing regression tests running in CI.
 - Distinguished the generated EME and authoritative AER shared-base-URI counts,

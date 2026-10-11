@@ -8,14 +8,14 @@ Use offline fixtures; do not run retailer sweeps, probes, catalogue publication 
 
 ## Shared checks
 
-This repository uses [Artic0din/reusable-workflows](https://github.com/Artic0din/reusable-workflows/tree/41d27a8de84b49dc338058bdb1740de1d30843b6), pinned to `41d27a8de84b49dc338058bdb1740de1d30843b6`.
+The repository baseline uses [DevKit](https://github.com/Artic0din/devkit/blob/546c21be3806b28c2ca71507da160e187626a2a0/.github/workflows/baseline.yml), pinned to `546c21be3806b28c2ca71507da160e187626a2a0` after its baseline consolidation and path-confinement fix.
 The additional shared-automation workflow checks an explicit list of committed project and agent files.
 Existing application workflows retain their own commands, runners, triggers and check names.
 File-existence checks establish repository structure, not application correctness or deployment acceptance.
 CodeQL, generated-output checks and dependency auto-merge are selected only when their contracts apply; this rollout does not enable privileged behavior.
-The baseline validates required paths with the runner's Python standard library in isolated mode, excluding caller modules from imports.
-Actions policy must permit the shared workflow library and its GitHub-owned checkout action.
-See [workflow contracts](https://github.com/Artic0din/reusable-workflows/blob/41d27a8de84b49dc338058bdb1740de1d30843b6/docs/workflow-contracts.md) and [consumer setup](https://github.com/Artic0din/reusable-workflows/blob/41d27a8de84b49dc338058bdb1740de1d30843b6/docs/consumer-setup.md).
+The baseline checks relative paths within the checkout using isolated Python; absolute paths and outside symlink targets fail.
+Actions policy must permit the public DevKit workflow and its pinned checkout action; no inherited secrets are needed.
+See the pinned [baseline contract, adoption and rollback](https://github.com/Artic0din/devkit/blob/546c21be3806b28c2ca71507da160e187626a2a0/docs/reusable-workflows.md).
 
 ## Agent skills
 
